@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Edit Task{% endblock %}
+{% block content %}
+<h1>Edit Task for {{ task.labour.user.username }}</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="description">Task Description:</label>
+    <input type="text" id="description" name="description" value="{{ task.description }}" required>
+    
+    <label for="deadline">Deadline:</label>
+    <input type="date" id="deadline" name="deadline" value="{{ task.deadline }}" required>
+    
+    <button type="submit">Update Task</button>
+</form>
+{% endblock %}

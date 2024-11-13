@@ -1,0 +1,33 @@
+<!-- sales_manager_dashboard/templates/sales_manager_dashboard/labour_task_status.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Labour Task Status</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Task Status for {{ labour.user.username }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Task Description</th>
+                <th>Date Assigned</th>
+                <th>Deadline</th>
+                <th>Status</th>
+                <th>Completion Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.description }}</td>
+                <td>{{ task.date_assigned }}</td>
+                <td>{{ task.deadline }}</td>
+                <td>{{ task.get_status_display }}</td>
+                <td>{{ task.completion_date|default:"-" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

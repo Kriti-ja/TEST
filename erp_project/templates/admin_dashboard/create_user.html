@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Add User{% endblock %}
+{% block content %}
+<h1>Add User</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    
+    <label for="role">Role:</label>
+    <select id="role" name="role">
+        <option value="sales_manager">Sales Manager</option>
+        <option value="labour">Labour</option>
+    </select>
+    
+    <button type="submit">Add User</button>
+</form>
+{% endblock %}

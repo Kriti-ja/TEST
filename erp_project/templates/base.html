@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ERP System{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <nav>
+        {% if user.is_authenticated %}
+            {% if user.role == 'admin' %}
+                <a href="{% url 'admin_dashboard' %}">Admin Dashboard</a>
+            {% elif user.role == 'sales_manager' %}
+                <a href="{% url 'sales_manager_dashboard' %}">Sales Manager Dashboard</a>
+            {% elif user.role == 'hr' %}
+                <a href="{% url 'hr_dashboard' %}">HR Dashboard</a>
+            {% elif user.role == 'labour' %}
+                <a href="{% url 'labour_dashboard' %}">Labour Dashboard</a>
+            {% endif %}
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </nav>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

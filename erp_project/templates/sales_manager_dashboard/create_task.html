@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Create Task{% endblock %}
+{% block content %}
+<h1>Create Task for {{ labour.user.username }}</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="description">Task Description:</label>
+    <input type="text" id="description" name="description" required>
+    
+    <label for="deadline">Deadline:</label>
+    <input type="date" id="deadline" name="deadline" required>
+    
+    <button type="submit">Create Task</button>
+</form>
+{% endblock %}

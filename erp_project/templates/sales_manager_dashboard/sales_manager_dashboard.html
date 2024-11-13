@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Sales Manager Dashboard{% endblock %}
+{% block content %}
+<h1>Sales Manager Dashboard</h1>
+<h2>Labours</h2>
+<ul>
+    {% for labour in labours %}
+    <li><a href="{% url 'labour_task_status' labour.id %}">{{ labour.user.username }}</a> - {{ labour.area }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

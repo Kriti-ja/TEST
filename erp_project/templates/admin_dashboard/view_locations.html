@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Location Tracking{% endblock %}
+{% block content %}
+<h1>Location Tracking</h1>
+<table>
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Timestamp</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for location in locations %}
+        <tr>
+            <td>{{ location.user.username }}</td>
+            <td>{{ location.latitude }}</td>
+            <td>{{ location.longitude }}</td>
+            <td>{{ location.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
